@@ -15,6 +15,9 @@ public class Player extends SpaceObject {
     private float acceleration;
     private float deceleration;
 
+    private float[] flamey;
+    private float[] flamex;
+
     public Player() {
 
         x = Game.WIDTH / 2;
@@ -26,6 +29,8 @@ public class Player extends SpaceObject {
 
         shapex = new float[4];
         shapey = new float[4];
+        flamex = new float[3];
+        flamey = new float[3];
 
         radians = 3.1415f / 2;
         rotationSpeed = 3;
@@ -44,6 +49,11 @@ public class Player extends SpaceObject {
 
         shapex[3] = x + MathUtils.cos(radians + 4 * 3.1415f / 5) * 8;
         shapey[3] = y + MathUtils.sin(radians + 4 * 3.1415f / 5) * 8;
+    }
+
+    private void setFlame() {
+        flamex[0] = 
+
     }
 
     public void setLeft(boolean b) {
