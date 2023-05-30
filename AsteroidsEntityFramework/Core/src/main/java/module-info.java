@@ -1,7 +1,7 @@
 module Core {
     requires Common;
     requires java.desktop;
-    requires gdx;
+    requires com.badlogic.gdx;
     exports dk.sdu.mmmi.cbse.main;
     uses dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
     uses dk.sdu.mmmi.cbse.common.services.IGamePluginService;

@@ -12,7 +12,6 @@ import dk.sdu.mmmi.cbse.common.events.EventType;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
 import java.util.List;
-import java.util.Timer;
 
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
