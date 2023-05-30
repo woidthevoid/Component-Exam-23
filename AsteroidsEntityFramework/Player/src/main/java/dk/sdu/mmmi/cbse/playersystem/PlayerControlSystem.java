@@ -2,17 +2,21 @@ package dk.sdu.mmmi.cbse.playersystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
+import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
-import dk.sdu.mmmi.cbse.common.events.Event;
-import dk.sdu.mmmi.cbse.common.events.EventType;
+import dk.sdu.mmmi.cbse.common.services.IBullet;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+
+import java.util.Collection;
+import java.util.ServiceLoader;
 
 import static dk.sdu.mmmi.cbse.common.data.GameKeys.*;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
+import static java.util.stream.Collectors.toList;
 
 /**
  *
@@ -31,10 +35,10 @@ public class PlayerControlSystem implements IEntityProcessingService {
             movingPart.setRight(gameData.getKeys().isDown(RIGHT));
             movingPart.setUp(gameData.getKeys().isDown(UP));
 
-            if (gameData.getKeys().isPressed(SPACE)) {
-                Event bulletfire = new Event(player, EventType.BULLET);
-
-                gameData.addEvent(bulletfire);
+            if (gameData.getKeys().isDown(GameKeys.SPACE)) {
+                for (IBullet bullet : getBulletSPIS()) {
+                    world.addEntity(bullet.createBullet(player, gameData));
+                }
             }
             
             movingPart.process(gameData, player);
@@ -68,4 +72,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
         entity.setShapeY(shapey);
     }
 
+    private Collection<? extends IBullet> getBulletSPIS() {
+        return ServiceLoader.load(IBullet.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
 }
