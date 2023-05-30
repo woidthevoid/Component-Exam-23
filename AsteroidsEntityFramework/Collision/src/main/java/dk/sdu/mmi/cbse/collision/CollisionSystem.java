@@ -5,6 +5,7 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
+import dk.sdu.mmmi.cbse.common.data.entityparts.TimerPart;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
 public class CollisionSystem implements IPostEntityProcessingService{
@@ -14,8 +15,8 @@ public class CollisionSystem implements IPostEntityProcessingService{
         for (Entity entity : world.getEntities()) {
             for (Entity collisionDetection : world.getEntities()) {
                 // get life parts on all entities
-                LifePart entityLife = entity.getPart(LifePart.class);
-                LifePart collisionLife = collisionDetection.getPart(LifePart.class);
+                TimerPart entityLife = entity.getPart(LifePart.class);
+                TimerPart collisionLife = collisionDetection.getPart(LifePart.class);
 
                 // if the two entities are identical, skip the iteration
                 if (entity.getID().equals(collisionDetection.getID())) {
