@@ -11,6 +11,7 @@
 
     <artifactId>Bullet</artifactId>
     <name>Bullet</name>
+    <packaging>jar</packaging>
 
     <build>
         <plugins>

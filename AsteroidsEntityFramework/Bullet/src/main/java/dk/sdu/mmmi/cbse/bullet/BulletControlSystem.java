@@ -12,6 +12,7 @@ import dk.sdu.mmmi.cbse.common.events.EventType;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 
 import java.util.List;
+import java.util.Timer;
 
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
@@ -32,10 +33,10 @@ public class BulletControlSystem implements IEntityProcessingService {
         }
 
         for (Entity bullet : world.getEntities(Bullet.class)) {
-            LifePart lifePart = bullet.getPart(LifePart.class);
+            TimerPart timerPart = bullet.getPart(LifePart.class);
 
-            lifePart.reduceExpiration(1);
-            if (lifePart.getExpiration() <= 0) {
+            timerPart.reduceExpiration(1);
+            if (timerPart.getExpiration() <= 0) {
                 world.removeEntity(bullet);
             }
 
@@ -68,7 +69,7 @@ public class BulletControlSystem implements IEntityProcessingService {
         float by = (float) sin(radians) * event.getSource().getRadius() * bullet.getRadius();
 
         bullet.add(new PositionPart(bx + x, by + y, radians));
-        bullet.add(new LifePart(1, expiration));
+        bullet.add(new LifePart(1));
         bullet.add(new MovingPart(0, 5000000, speed, 5));
         bullet.add(new TimerPart(1));
 
