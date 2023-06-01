@@ -35,6 +35,36 @@
             <artifactId>Common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>5.3.10</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -50,7 +80,8 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <includeArtifactIds>shadedlibgdx</includeArtifactIds>
+                            <includeArtifactIds>shadedlibgdx,spring-context,spring-core,spring-beans,
+                            spring-aop,spring-expression,commons-logging</includeArtifactIds>
                             <outputDirectory>../mods-mvn</outputDirectory>
                         </configuration>
                     </execution>
@@ -72,6 +103,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -12,7 +12,6 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import dk.sdu.mmmi.cbse.managers.GameInputProcessor;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.ServiceLoader;
@@ -26,11 +25,17 @@ public class Game
     private ShapeRenderer sr;
 
     private final GameData gameData = new GameData();
-    private List<IEntityProcessingService> entityProcessors = new ArrayList<>();
-    private List<IGamePluginService> entityPlugins = new ArrayList<>();
-    private List<IPostEntityProcessingService> postEntityProcessors = new ArrayList<>();
+    private final List<IGamePluginService> gamePluginServices;
+    private List<IEntityProcessingService> entityProcessingServices;
+    private List<IPostEntityProcessingService> postEntityProcessingServices;
     private World world = new World();
 
+    public Game(List<IGamePluginService> gamePluginServices, List<IEntityProcessingService> entityProcessingServices,
+                List<IPostEntityProcessingService> postEntityProcessingServices) {
+        this.gamePluginServices = gamePluginServices;
+        this.entityProcessingServices = entityProcessingServices;
+        this.postEntityProcessingServices = postEntityProcessingServices;
+    }
     @Override
     public void create() {
 
