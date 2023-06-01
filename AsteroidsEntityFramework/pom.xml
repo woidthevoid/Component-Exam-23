@@ -45,11 +45,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
-                <configuration>
-                    <fork>true</fork>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -74,8 +69,6 @@
                         -->
                         <argument>-Dorg.lwjgl.util.Debug=true</argument>
                         <argument>-Djava.library.path=libs</argument>
-                        <argument>--module-path=mods-mvn</argument>
-                        <argument>--class-path=libs/*</argument>
                         <!-- because spark.core is an automatic module and actually required,
                         monitor.observer.zero would be resolved as well and does not need
                         to be added explicitly;
@@ -83,7 +76,6 @@
                         in "java.lang.module.FindException: Module monitor.observer.zero not found";
                         strange... -->
                         <!--<argument>&#45;&#45;add-modules=monitor.observer.zero</argument>-->
-                        <argument>--module=Core/dk.sdu.mmmi.cbse.main.Main</argument>
                     </arguments>
                 </configuration>
             </plugin>
