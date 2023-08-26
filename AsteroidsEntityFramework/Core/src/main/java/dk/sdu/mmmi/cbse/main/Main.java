@@ -17,6 +17,6 @@ public class Main {
 		config.setTitle("Asteroids");
 		config.setWindowSizeLimits(1000,600,1000,600);
 
-		new Lwjgl3Application(ctx.getBean(Game.class));
+		new Lwjgl3Application(ctx.getBean(Game.class), config);
 	}
 }

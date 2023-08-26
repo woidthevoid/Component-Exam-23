@@ -1,4 +1,5 @@
 module Core {
+    opens dk.sdu.mmmi.cbse.main to spring.core;
     requires Common;
     requires java.desktop;
     requires com.badlogic.gdx;

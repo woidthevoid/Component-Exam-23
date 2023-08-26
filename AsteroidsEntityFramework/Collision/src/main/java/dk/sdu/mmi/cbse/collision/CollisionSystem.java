@@ -8,6 +8,7 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.PositionPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.TimerPart;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
+/*
 public class CollisionSystem implements IPostEntityProcessingService{
     @Override
     public void process(GameData gameData, World world) {
@@ -26,7 +27,7 @@ public class CollisionSystem implements IPostEntityProcessingService{
                 }
                 if (entityLife.getExpiration() <= 0) {
                     world.removeEntity(entity);
-                    // if collisioner expiration is zero or beloq, remove.
+                    // if collisioner expiration is zero or below, remove.
                     if (collisionLife.getExpiration() <= 0) {
                         world.removeEntity(collisionDetection);
                     }
@@ -54,3 +55,4 @@ public class CollisionSystem implements IPostEntityProcessingService{
     }
 
 }
+*/
